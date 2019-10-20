@@ -1,8 +1,5 @@
-# Tokio's Website
+# RTMP Website
 
-The website for the Tokio project. Lives at [https://tokio.rs](https://tokio.rs).
-
-[![Build Status](https://travis-ci.org/tokio-rs/website.svg?branch=master)](https://travis-ci.org/tokio-rs/website)
 
 ## Getting Started
 
@@ -16,7 +13,7 @@ brew update && brew install hugo
 Then, get the website running locally:
 
 ```sh
-git clone https://github.com/tokio-rs/website
+git clone https://github.com/veriskope/rtmp
 cd website
 hugo server
 ```
@@ -29,6 +26,4 @@ This project is licensed under the [MIT license](LICENSE).
 
 ### Contribution
 
-Unless you explicitly state otherwise, any contribution intentionally submitted
-for inclusion in Tokio by you, shall be licensed as MIT, without any additional
-terms or conditions.
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion by you, shall be licensed as MIT, without any additional terms or conditions.
