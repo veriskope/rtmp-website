@@ -1,10 +1,10 @@
 ---
-baseurl: "https://tokio.rs"
-title: "Tokio - The asynchronous run-time for the Rust programming language."
+baseurl: "https://rtmp.veriskope.com"
+title: "Real-Time Messaging Protocol (RTMP)"
 languageCode: "en-us"
 canonifyURLs: "true"
 googleAnalytics: "UA-90234741-1"
 
 
 params:
-  tokioDocsURL: "https://docs.rs/tokio/0.1/tokio"
+ # tokioDocsURL: "https://docs.rs/tokio/0.1/tokio"
