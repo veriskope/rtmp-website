@@ -1,29 +1,19 @@
 +++
-title = "The Tokio Community"
+title = "The Community"
 description = "Get help, discuss problems, and join the fun"
 +++
 
-# Communication
+# Questions? Corrections?
 
-The Tokio community is most readily found on
-[its gitter channel](https://gitter.im/tokio-rs/tokio), where you're welcome to
-ask questions, report problems, or pitch ideas.
+Github is used for tracking issues, including content we'd like to add. If
+you submit an issue with a question, we'll try to include an answer in 
+a future update of the site.
 
-# Issues
+The primary location for these is the [main repository](https://github.com/../issues).
 
-Github is used for tracking issues. The primary location for these is the main
-[Tokio repository](https://github.com/tokio-rs/tokio/issues).
-
-If you're a Tokio user, you're highly encouraged to keep an eye on these issues
-and jump in on the discussions, to help us understand how design tradeoffs might
-affect you.
-
-These repositories also contain milestones for upcoming *major* releases, which
-are currently used to track breaking changes that might be considered for the
-next major release.
 
 # Get Involved
 
-Are you interested in getting involved with the code and participating in
-Google's Summer of Code? Check out our [ideas list](/gsoc/) and submit an
-application!
+Check out the source to this website -- we would welcome a pull request or
+chime in on an issue if you know the answer!
+
