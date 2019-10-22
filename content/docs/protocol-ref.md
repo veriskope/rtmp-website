@@ -19,4 +19,3 @@ menu: "docs"
 <ul>
 <li><a href="https://tools.ietf.org/html/rfc7826" rel="nofollow" target="_blank">RTSP 2.0</a>, IETF RFC / Standards Track</li>
 </ul>
-</article>

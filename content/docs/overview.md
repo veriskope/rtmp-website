@@ -39,4 +39,3 @@ menu: "docs"
 <p>A client or a server can make a Remote Procedure Call (RPC) using command messages to the peer.
 Command messages carry AMF encoded commands between the client and the server.</p>
 <p>TO DO: add detail here</p>
-</article>
