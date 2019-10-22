@@ -1,5 +1,5 @@
 ---
-baseurl: "https://rtmp.netifly.com"
+baseurl: "https://rtmp.onrender.com"
 title: "Real-Time Messaging Protocol (RTMP)"
 languageCode: "en-us"
 canonifyURLs: "true"
