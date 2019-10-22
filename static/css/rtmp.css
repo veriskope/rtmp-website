@@ -527,9 +527,11 @@ img {
 }
 
 .tk-footer-links {
+  color:#000;
   padding-left: 0;
   margin-bottom: 1rem;
 }
+
 .tk-footer-links li {
   display: inline-block;
 }
@@ -538,7 +540,6 @@ img {
 }
 .tk-footer a {
   font-weight: 500;
-  color: #495057;
 }
 
 /*
