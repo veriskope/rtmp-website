@@ -4,6 +4,11 @@ title: "Real-Time Messaging Protocol (RTMP)"
 languageCode: "en-us"
 canonifyURLs: "true"
 googleAnalytics: "UA-90234741-1"
-
-
+menu:
+  docs:
+    - identifier: "rtmp_spec"
+      name: "Adobe RTMP Specification (PDF)"
+      url: "/pdf/rtmp_specification_1.0.pdf"
+      hrefTargetBlank: "true"
+      weight: 1000
 params:
