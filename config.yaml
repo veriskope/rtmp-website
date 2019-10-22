@@ -1,5 +1,5 @@
 ---
-baseurl: "https://rtmp.veriskope.com"
+baseurl: "https://rtmp.netifly.com"
 title: "Real-Time Messaging Protocol (RTMP)"
 languageCode: "en-us"
 canonifyURLs: "true"
