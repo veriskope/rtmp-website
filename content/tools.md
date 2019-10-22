@@ -3,11 +3,6 @@ title = "RTMP Tools"
 description = "The tools you need to to help you, or get started."
 +++
 
-<h2>Download RTMP SDK 2.0</h2>
-<ul>
-<li><a href="https://veriskope.com/sales/" target="_blank">RTMP SDK 2.0 C++</a></li>
-</ul>
-
 
 <h2>Command line tools</h2>
 <ul>
@@ -22,7 +17,7 @@ description = "The tools you need to to help you, or get started."
 </ul>
 <h2>Libraries</h2>
 <ul>
-<li>Adobe RTMP SDK (available from Veriskope)</li>
+<li><a href="https://www.veriskope.com/products/rtmp-sdk/" target="_blank">Adobe RTMP SDK (available from Veriskope)</a></li>
 <li><a href="https://rtmpdump.mplayerhq.hu/librtmp.3.html" rel="nofollow" target="_blank">https://rtmpdump.mplayerhq.hu/librtmp.3.html</a> (GPLv2)
 <ul>
 <li><a href="https://github.com/K-S-V/Scripts/releases/tag/v2.4" target="_blank">KSV patches</a> - <a href="https://web.archive.org/web/20180415221529/http://stream-recorder.com/forum/customized-rtmpdump-binaries-patch-file-t16103.html" rel="nofollow" target="_blank">thread</a></li>
