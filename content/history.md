@@ -5,7 +5,7 @@ description = "Learn more about the history of this amazing technology"
 
 <ul class="timeline">
                 <li>
-					<strong>Veriskope acquires RTMP license, Continues development</strong>
+					<strong>Veriskope acquires RTMP license, continues development</strong>
 					<div class="float-right">2019</div>					
 				</li>
                 <li>
