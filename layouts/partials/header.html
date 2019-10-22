@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/css/bootstrap-reboot.css">
   <link rel="stylesheet" href="/css/bootstrap.css">
   <link rel="stylesheet" href="/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/tokio.css">
+  <link rel="stylesheet" href="/css/rtmp.css">
 
   <!-- Docsearch CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
@@ -49,7 +49,7 @@
         </li>
         <li class="nav-item">
           {{ $isCommunity := hasPrefix .URL "/community" }}
-          <a class="nav-link {{ if $isCommunity }} active {{ end }}" href="{{ ref . "/community.md" }}">Tools</a>
+          <a class="nav-link {{ if $isCommunity }} active {{ end }}" href="{{ ref . "/tools.md" }}">Tools</a>
         </li>
 
         <li class="nav-item">
