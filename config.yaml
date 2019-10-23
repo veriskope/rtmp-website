@@ -3,7 +3,7 @@ baseurl: "https://rtmp.veriskope.com"
 title: "Real-Time Messaging Protocol (RTMP)"
 languageCode: "en-us"
 canonifyURLs: "true"
-googleAnalytics: "UA-90234741-1"
+googleAnalytics: "UA-132929302-1"
 menu:
   docs:
     - identifier: "rtmp_spec"

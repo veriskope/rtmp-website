@@ -5,7 +5,7 @@ description = "Learn more about the history of this amazing technology"
 
 <ul class="timeline">
                 <li>
-					<strong>Veriskope acquires RTMP license, continues development</strong>
+					<strong>Veriskope acquires Adobe Media Server and RTMP software tools, continues development of RTMP</strong>
 					<div class="float-right">2019</div>					
 				</li>
                 <li>
