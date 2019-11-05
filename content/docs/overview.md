@@ -26,7 +26,7 @@ menu: "docs"
 <h4>RTMP Chunk Stream</h4>
 <p>When using a reliable, ordered transport protocol, such as TCP/IP, RTMP allows for low-latecy, interactive application by splitting larger messages into smaller "chunks" for multiplexed delivery.</p>
 <p>Chunking allows small messages to be sent with less overhead, as the chunk header contains a compressed representation of information that would otherwise have to be included in the message itself.</p>
-<p>For more detail, see <a href="https://github.com/veriskope/rtmp/blob/master/spec/spec/chunk-format" target="_blank">chunk format</a>.</p>
+<p>For more detail, see <a href="/docs/chunk-stream/" target="_blank">chunk format</a>.</p>
 <h3>Initial Connection Sequence</h3>
 <ol>
 <li>Handshake (spec section 5.2)</li>
