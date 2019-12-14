@@ -72,9 +72,9 @@ description = "Learn more about the history of this amazing technology"
 				</li>
                 <li>
 					<div class="float-right">July, 2002</div>
-                   <strong>Flash Media Server 1.0 Released</strong><br/>
-                   <span class="description">Included all the basic features that make up the product, including the NetConnection, SharedObject and NetStream objects.
-</div>								
+                   <strong>Flash Communication Server 1.0 Released</strong><br/>
+                   <span class="description">Included scripting interfaces to the core protocol capabilities, including NetConnection, NetStream, and SharedObject.
+					</div>
 				</li>
                 <li>
 					<div class="float-right">March 16, 2002</div>
