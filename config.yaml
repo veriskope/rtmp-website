@@ -12,3 +12,8 @@ menu:
       hrefTargetBlank: "true"
       weight: 1000
 params:
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
