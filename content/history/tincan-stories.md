@@ -1,7 +1,9 @@
 +++
-title = "Tincan Stories"
-description = "What we designed the RTMP protocol to do"
+title = "Tin Can Stories"
+description = "The team envisions applications that would be possible by creating the RTMP protocol. "
 +++
+
+*Late 2000 or early 2001*
 
 ## Classroom
 A professor gives a lecture to a class over the Internet. He has a video feed where he can talk. He can also deliver documents, pre-created video clips, slides, or simulations created as Flash movies. The students submit questions as the professor is talking. Since the professor sees the questions as he is talking he can incorporate answers into the lecture without any interruptions in his presentation. The students provide real time feedback to the professor. They indicate if they already know the material, if the material is interesting or boring, and if they understand or are confused. The professor uses this real time information to adjust his lecture to skip over topics students know already or to spend more time on confusing topics.
@@ -18,12 +20,14 @@ Imagine that I place a camera, display, speakers and microphone at the front doo
 ## Customer Service
 I visit a web site selling cars and I want to ask a question of a sales person. I open the Flash customer support movie. It gives me a live voice and video connection to a customer service rep. The customer service rep has a different UI. They have the ability to also select information and video clips to be displayed in my movie so they can give me the sales pitch. If I am interested in a particular car, they can show me video of that car in the snow or in different driving conditions for a customized sales pitch. They can also select background music to put me into a buying mood. The customer service manager can watch both sides of the conversation from the management UI so they can monitor the technique of the sales person.
 
-##Car Race
+## Car Race
 I am watching a car race, there are cameras at each turn and in the cars. I value the editing and filtering provided by the TV crew but I also have a favorite driver I want to watch closely. I can choose to watch the edited feed or I use a Flash UI to choose the camera I want to watch. The UI consists of a list of cars with cameras. I click on any car to see the live view from the car, or I select the car and see a timeline of the entire race and review any portion of the video from the car. The UI for the timeline is an elapsed time, or a lap number and a position on the track. I can also view the video from any of the cameras around the track. Each racetrack would has a custom Flash UI that shows the course. This UI is a front-end for a Tin Can video server.
 
 ## Group Story Game
 Imagine a story telling game based on the idea of improv comedy. The game sets an initial premise for a story. Each participant in the game can record a 30 second video piece for the first part of the story. All of the participants then vote on which is the best video piece. That piece becomes the first part of the story. The story continues in this manner. The participant whose video is selected the most times wins the game. Also, the complete story is preserved as a piece of content on the Internet. A custom Flash movie provides the interface for building the story and a Tin Can server stores the story.
+
 There is also another version of the game where people take turns and their segment is always included on their turn. The participants vote on the best segment.
+
 The moderator of the game has a special Flash movie where they can control the progression of the game.
 
 ## Remote Presence

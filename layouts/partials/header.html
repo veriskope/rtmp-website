@@ -35,7 +35,7 @@
 <body>
   <header class="navbar navbar-expand navbar-dark flex-column flex-md-row tk-navbar">
     <a class="navbar-brand" href="/">
-     <img src="/img/RTMP_logo-1-small.png">
+      <img src="/img/RTMP_logo-1-small.png">
     </a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav">
@@ -54,13 +54,13 @@
 
         <li class="nav-item">
           {{ $isHistory := hasPrefix .URL "/history" }}
-          <a class="nav-link {{ if $isHistory }} active {{ end }}" href="{{ ref . "/history.md" }}">History</a>
+          <a class="nav-link {{ if $isHistory }} active {{ end }}" href="{{ ref . "/history/timeline.md" }}">History</a>
         </li>
       </ul>
     </div>
 
     <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-      
+
       <li class="nav-item">
         <a class="nav-link p-2" href="https://github.com/veriskope/rtmp-website" target="_blank" rel="noopener"
           aria-label="GitHub">
@@ -72,7 +72,7 @@
           </svg>
         </a>
       </li>
-     
-     
+
+
     </ul>
   </header>
