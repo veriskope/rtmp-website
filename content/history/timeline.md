@@ -88,8 +88,8 @@ description = "Learn more about the history of this amazing technology"
 					<div class="float-right">sometime in 2000</div>
                    <strong>Macromedia "Tin Can" project starts</strong><br/>
                    <span class="description">Jonathan Gay pitched the idea of a new server product with the code-name "Tin Can" (as in two tin cans and a string). Before the team started writing code, the team envisioned the capabilities of the protocol that will later be named
-									 RTMP. Each of the engineers contributed narrative <a href="../tincan-stories">stories</a> about the applications that will be made possible.  
+									 RTMP. Each of the engineers contributed narrative <a href="/history/tincan-stories">stories</a> about the applications that will be made possible.  
 					</div>									
 				</li>
 
-			</ul>
+</ul>
