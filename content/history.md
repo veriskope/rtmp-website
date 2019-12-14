@@ -3,6 +3,8 @@ title = "History of RTMP"
 description = "Learn more about the history of this amazing technology"
 +++
 
+<h2>Timeline</h2>
+
 <ul class="timeline">
                 <li>
 					<strong>Veriskope acquires Adobe Media Server and RTMP software tools, continues development of RTMP</strong>
