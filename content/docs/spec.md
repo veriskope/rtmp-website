@@ -10,7 +10,7 @@ This memo describes Adobe’s Real Time Messaging Protocol (RTMP), an applicatio
 
 ## Status of this document
 
-This is a machine-readable version of the December 21, 2012 "Adobe’s Real Time Messaging Protocol" spec, which was [originally published as a pdf](../../pdf/rtmp_specification_1.0.pdf). There have been no substantive changes to the spec. The only changes are in format and copyedits.
+This is a machine-readable version of the December 21, 2012 "Adobe’s Real Time Messaging Protocol" spec, which was [originally published as a PDF](../../pdf/rtmp_specification_1.0.pdf). There have been no substantive changes to the spec from the 2012 PDF as of this HTML publication in January 2019. The only changes are in format and copyedits.
 
 
 ## 1. Introduction
