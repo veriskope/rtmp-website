@@ -52,7 +52,7 @@
       <div class="github-edit">
         <a class="fa fa-github" href="https://github.com/veriskope/rtmp-website/tree/master/content{{ .File.Path }}"> Edit on GitHub</a>
       </div>
-      {{ .Content }}
+      {{ partial "headline-hash.html" .Content }}
       <!-- Yes prev... because hugo bugs -->
       {{ with .PrevInSection }}
         <div class="tk-next">
@@ -62,5 +62,4 @@
     </main>
   </div>
 </div>
-
 {{ partial "footer" . }}
