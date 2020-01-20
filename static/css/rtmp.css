@@ -650,14 +650,8 @@ code {
   font-weight: bold;
 }
 
-/* Show section header on hover */
 
-h2:hover a:after,
-h3:hover a:after,
-h4:hover a:after,
-h5:hover a:after {
-    content: '\2002\00a7\2002';
-}
+/* Section header anchor links */
 
 h2:hover a,
 h3:hover a,
