@@ -21,8 +21,8 @@
           {{ $currentPage := . }}
           {{ range .Site.Menus.docs }}
 
-            <div class="tk-toc-item">
-              <a class="tk-toc-link" href="{{ .URL }}">
+            <div class="tk-toc-item {{ if or ($currentPage.IsMenuCurrent "docs" .) ($currentPage.HasMenuCurrent "docs" .) }}active{{ end }}">
+              <a href="{{ .URL }}" title="{{ .Title }}" class="tk-toc-link">
                 {{ .Name }}
               </a>
             </div>
