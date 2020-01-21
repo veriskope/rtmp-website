@@ -1,9 +1,20 @@
 {{ partial "header" . }}
 {{ $currentURL := .URL }}
 
+{{ define "breadcrumb" }}
+  {{ $parent := .page.Parent }}
+  {{ if $parent }}
+    {{ $value := (printf "<a href='%s'>%s</a> > %s" $parent.URL $parent.Title .value) }}
+    {{ template "breadcrumb" dict "page" $parent "value" $value }}
+  {{ else }}
+    {{ .value|safeHTML }}
+  {{ end }}
+{{ end }}
+
 <div class="container-fluid tk-docs">
   <div class="row flex-xl-nowrap">
     <div class="col-12 col-md-3 col-xl-2 tk-sidebar">
+
       <form class="tk-search d-flex align-items-center">
         <span class="algolia-autocomplete algolia-autocomplete-left" style="position: relative; display: inline-block; direction: ltr;">
           <input class="form-control ds-input" id="search-input" placeholder="Search..." autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" style="position: relative; vertical-align: top;" dir="auto" type="search">
@@ -18,35 +29,26 @@
       </form>
 
       <nav class="tk-links collapse" id="tk-docs-nav">
-          {{ $currentPage := . }}
-          {{ range .Site.Menus.docs }}
-
-            <div class="tk-toc-item {{ if or ($currentPage.IsMenuCurrent "docs" .) ($currentPage.HasMenuCurrent "docs" .) }}active{{ end }}">
-              <a href="{{ .URL }}" title="{{ .Title }}" class="tk-toc-link">
-                {{ .Name }}
-              </a>
-            </div>
-
-          {{ end }}
+          {{ .TableOfContents }}
       </nav>
+
     </div>
 
-
-
-
-
-
-
-    <div class="d-none d-xl-block col-xl-2 tk-toc">
-      <div class="section-nav">
-        {{ .TableOfContents }}
-      </div>
-    </div>
     <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 tk-content tk-docs">
-      <h1 class="tk-title">{{ .Title }}</h1>
+
+      <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+          <span class="links">
+            {{ $title := (or .Params.menuTitle .Title) }}
+            {{ template "breadcrumb" dict "page" . "value" $title }}
+          </span>
+      </div>
+
       <div class="github-edit">
         <a class="fa fa-github" href="https://github.com/veriskope/rtmp-website/tree/master/content{{ .File.Path }}"> Edit on GitHub</a>
       </div>
+
+      <h1 class="tk-title">{{ .Title }}</h1>
+
       {{ partial "headline-hash.html" .Content }}
       <!-- Yes prev... because hugo bugs -->
       {{ with .PrevInSection }}
