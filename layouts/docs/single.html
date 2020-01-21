@@ -20,28 +20,23 @@
       <nav class="tk-links collapse" id="tk-docs-nav">
           {{ $currentPage := . }}
           {{ range .Site.Menus.docs }}
-            {{ if .HasChildren }}
-              {{ $firstChild := index (.Children) 0 }}
-              <div class="tk-toc-item {{ if $currentPage.HasMenuCurrent "docs" . }}active{{ end }}">
-                <a class="tk-toc-link" href="{{ $firstChild.URL }}">
-                  {{ .Name }}
-                </a>
-                <ul class="nav tk-sidenav">
-                {{ range .Children }}
-                  <li><a href="{{ .URL }}" class="{{ if $currentPage.IsMenuCurrent "docs" . }}active{{ end }}">{{ .Name }}</a></li>
-                {{ end }}
-                </ul>
-              </div>
-            {{ else }}
-              <div class="tk-toc-item">
-                <a class="tk-toc-link" href="{{ .URL }}">
-                  {{ .Name }}
-                </a>
-              </div>
-            {{ end }}
+
+            <div class="tk-toc-item">
+              <a class="tk-toc-link" href="{{ .URL }}">
+                {{ .Name }}
+              </a>
+            </div>
+
           {{ end }}
       </nav>
     </div>
+
+
+
+
+
+
+
     <div class="d-none d-xl-block col-xl-2 tk-toc">
       <div class="section-nav">
         {{ .TableOfContents }}
