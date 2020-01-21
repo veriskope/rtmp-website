@@ -1,11 +1,10 @@
 ---
-title: "Message Format"
+title: "Chunk Stream Message Format"
 weight: 3
 menu: "docs"
 ---
 
-<h1>Chunk Stream Message Type</h1>
-RTMP spec, section 6.1 
+RTMP spec, section 6.1
 
 ```
     ---------------------------------------------------------------------

@@ -1,10 +1,8 @@
 ---
-title: "Overview" 
-weight: 1 
+title: "Overview"
+weight: 1
 menu: "docs"
 ---
-
-# Real Time Messaging Protocol Overview
 
 Real Time Messaging Protocol (RTMP) was designed to support very low-latency for
 interactive, multiparty applications with seamless integration of live or
@@ -65,6 +63,6 @@ For more detail, see [chunk format](spec/chunk-format).
 ## Command Messages
 A client or a server can make a Remote Procedure Call (RPC) using command
 messages to the peer. Command messages carry AMF encoded commands between the
-client and the server. 
+client and the server.
 
 TO DO: add detail here
