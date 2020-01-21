@@ -48,8 +48,8 @@
           <a class="nav-link {{ if $isDocs }} active {{ end }}" href="{{ $docs.URL }}">Documentation</a>
         </li>
         <li class="nav-item">
-          {{ $isCommunity := hasPrefix .URL "/community" }}
-          <a class="nav-link {{ if $isCommunity }} active {{ end }}" href="{{ ref . "/tools.md" }}">Tools</a>
+          {{ $isTools := hasPrefix .URL "/tools" }}
+          <a class="nav-link {{ if $isTools }} active {{ end }}" href="{{ ref . "/tools.md" }}">Tools</a>
         </li>
 
         <li class="nav-item">
