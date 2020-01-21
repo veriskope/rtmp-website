@@ -339,6 +339,23 @@ img {
 }
 
 /*
+ * Table of Contents on docs pages (left nav)
+ */
+
+#TableOfContents ul li::marker {
+  color: #f7f7f7; /* this is a hack to hide hugo-generated list markers*/
+}
+
+#TableOfContents > ul {
+  padding-left: 0;
+}
+
+#TableOfContents ul {
+  padding-left: 1rem;
+}
+
+
+/*
  * Offsets anchor links to avoid the sticky header
  */
 .tk-content > h1[id]::before,
