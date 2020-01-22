@@ -26,7 +26,7 @@ RTMP supports multiple transports:
 * HTTP/S
 * UDP via [RTMFP](https://tools.ietf.org/html/rfc7425)
 
-### Multiplexed Streams
+## Multiplexed Streams
 
 An RTMP connection multiplexes one or more streams. Each stream is a logical
 channel, carrying messages of one type for a single audio, video or data stream.
