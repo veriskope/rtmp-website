@@ -37,6 +37,7 @@
     <a class="navbar-brand" href="/">
       <img src="/img/RTMP_logo-1-small.png">
     </a>
+
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -51,7 +52,6 @@
           {{ $isTools := hasPrefix .URL "/tools" }}
           <a class="nav-link {{ if $isTools }} active {{ end }}" href="{{ ref . "/tools.md" }}">Tools</a>
         </li>
-
         <li class="nav-item">
           {{ $isHistory := hasPrefix .URL "/history" }}
           <a class="nav-link {{ if $isHistory }} active {{ end }}" href="{{ ref . "/history/timeline.md" }}">History</a>
@@ -60,7 +60,6 @@
     </div>
 
     <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-
       <li class="nav-item">
         <a class="nav-link p-2" href="https://github.com/veriskope/rtmp-website" target="_blank" rel="noopener"
           aria-label="GitHub">
@@ -72,7 +71,62 @@
           </svg>
         </a>
       </li>
-
-
     </ul>
+
+    <div>
+      {{ block "headcrumbs" . }}
+      <!-- The part of the page that begins to differ between templates -->
+      {{ end }}
+    </div>
   </header>
+
+
+  {{ block "main" . }}
+  <!-- The part of the page that begins to differ between templates -->
+  {{ end }}
+
+  <footer class="tk-footer">
+    <div class="container-fluid p-3 p-md-5">
+      <ul class="tk-footer-links">
+        <li>See source on <a href="https://github.com/veriskope/rtmp-website">GitHub <i class="fa fa-github"></i></a>. Contributors welcome :-)</li>
+      </ul>
+      <p>Created by the RTMP experts at <a href="https://www.veriskope.com/">Veriskope <img src="/img/veriskope.gif" style="max-width: 20px;" /></a></p>
+    </div>
+  </footer>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/highlight.js"></script>
+    <script>
+      $(function () {
+        $("pre code").each(function(i, block) {
+          // $(block).parent().wrap('<div class="tk-example"></div>');
+          if (block.className.indexOf('language-rust') >= 0) {
+            var new_content = '';
+            var lines = block.textContent.split('\n');
+            for (var i = 0; i < lines.length; i++) {
+              if (lines[i].indexOf('# ') == 0 || lines[i] == '#') {
+                continue
+              }
+              new_content += lines[i].trimRight() + '\n';
+            }
+            block.textContent = new_content.replace(/\n\n\n/g, "\n\n").trimRight();
+          }
+          hljs.highlightBlock(block);
+        });
+      });
+    </script>
+    <!-- at the end of the BODY -->
+   <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script> -->
+    <script type="text/javascript"> //docsearch({
+    //apiKey: 'd7b5b785798fe748621bcaa8301a2201',
+    //indexName: 'veriskope',
+    //inputSelector: '#search-input',
+    //debug: false // Set debug to true if you want to inspect the dropdown
+    //});
+    </script>
+    {{ template "_internal/google_analytics.html" . }}
+  </body>
+</html>
