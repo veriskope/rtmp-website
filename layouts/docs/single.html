@@ -1,6 +1,3 @@
-{{ partial "header" . }}
-{{ $currentURL := .URL }}
-
 {{ define "breadcrumb" }}
   {{ $parent := .page.Parent }}
   {{ if $parent }}
@@ -10,6 +7,18 @@
     {{ .value|safeHTML }}
   {{ end }}
 {{ end }}
+
+{{ define "headcrumbs" }}
+<div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+  <span class="links">
+    {{ $title := (or .Params.menuTitle .Title) }}
+    {{ template "breadcrumb" dict "page" . "value" $title }}
+  </span>
+</div>
+{{ end }}
+
+{{ define "main" }}
+{{ $currentURL := .URL }}
 
 <div class="container-fluid tk-docs">
   <div class="row flex-xl-nowrap">
@@ -59,4 +68,5 @@
     </main>
   </div>
 </div>
-{{ partial "footer" . }}
+
+{{ end }}

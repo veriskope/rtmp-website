@@ -1,4 +1,6 @@
-{{ partial "header" . }}
+{{ define "main" }}
+
+<!-- This file is for defining any unique layout that's on the homepage -->
 
 <main class="tk-masthead">
   <div class="container">
@@ -11,7 +13,7 @@
         <p class="lead">
           Real Time Messaging Protocol (RTMP) was designed to support very low-latency for interactive, multiparty applications with seamless integration of live or recorded video, as well as broadcast streaming, video on demand (VOD) use cases.
         </p>
-      
+
         <div class="d-flex flex-column flex-md-row lead mb-3">
           <a href="{{ ref . "/docs/overview.md" }}" class="btn btn-lg btn-tk-primary mb-3 mb-md-0 mr-md-3">Get started</a>
         </div>
@@ -77,8 +79,8 @@
     <ul>
       <li>FFMPEG</li>
       <li>OBS Studio</li>
-      <li>Wireshark</li>      
-      <li>WOWZA</li>   
+      <li>Wireshark</li>
+      <li>WOWZA</li>
       <li>Nginx</li>
       <li>Helix</li>
       <li>Red5</li>
@@ -91,4 +93,4 @@
   </div>
 </div>
 
-{{ partial "footer" . }}
+{{ end }}
