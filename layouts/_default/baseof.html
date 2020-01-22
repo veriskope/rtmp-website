@@ -75,8 +75,14 @@
 
 
     </ul>
-  </header>
-  <h1>TEST</h1>
+    <div>
+      {{ block "headcrumbs" . }}
+      <!-- The part of the page that begins to differ between templates -->
+      {{ end }}
+    </div>
+    </header>
+
+  
   {{ block "main" . }}
   <!-- The part of the page that begins to differ between templates -->
   {{ end }}

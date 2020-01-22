@@ -8,6 +8,16 @@
   {{ end }}
 {{ end }}
 
+{{ define "headcrumbs" }}
+
+<div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+  <span class="links">
+    {{ $title := (or .Params.menuTitle .Title) }}
+    {{ template "breadcrumb" dict "page" . "value" $title }}
+  </span>
+</div>
+{{ end }}
+
 {{ define "main" }}
 {{ $currentURL := .URL }}
 
@@ -38,12 +48,6 @@
 
     <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 tk-content tk-docs">
 
-      <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
-          <span class="links">
-            {{ $title := (or .Params.menuTitle .Title) }}
-            {{ template "breadcrumb" dict "page" . "value" $title }}
-          </span>
-      </div>
 
       <div class="github-edit">
         <a class="fa fa-github" href="https://github.com/veriskope/rtmp-website/tree/master/content{{ .File.Path }}"> Edit on GitHub</a>
