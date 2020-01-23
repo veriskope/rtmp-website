@@ -335,14 +335,6 @@ img {
   text-transform: uppercase;
 }
 
-.tk-content > h1:not(:first-child) {
-  /* margin-top: 2rem; */
-}
-
-.tk-content p {
-  max-width: 80%;
-}
-
 .tk-next {
   text-align: right;
   margin-top: 1.5rem;
