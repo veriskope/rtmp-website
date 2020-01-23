@@ -276,21 +276,7 @@ img {
   order: 1;
 }
 
-.tk-content,
-.tk-content h1
-{
-  color: #333;
-}
-
-.tk-blog h1.tk-title
-{
-  /*
-  font-size: 2.5rem;
-  font-weight: 400;
-  */
-  /* margin-top: 1rem; */
-  /* margin-bottom: 2.25rem; */
-  /* border-bottom: 1px solid rgba(0,0,0,.1); */
+.tk-blog h1.tk-title {
   max-width: 80%;
 }
 
@@ -311,30 +297,46 @@ img {
   font-weight: 300;
 }
 
+.tk-content p {
+  line-height: 1.5;
+}
+
 .tk-content h1 {
-  font-size: 2rem;
-  font-weight: 400;
-  margin-bottom: 0.75rem;
+  color: #4c4c4c;
+  font-size: 3rem;
+  line-height: 1.25;
+  padding-top: 1rem;
 }
 .tk-content h2 {
-  font-size: 1.75rem;
-  font-weight: 400;
+  color: #4c4c4c;
+  font-size: 2.25rem;
+  line-height: 1.25;
+  padding-top: 1rem;
 }
 .tk-content h3 {
-  font-size: 1.5rem;
-  font-weight: 400;
+  border-bottom: 1px solid black;
+  font-size: 1.1rem;
+  line-height: 1.25;
+  padding-top: .8rem;
+  text-transform: uppercase;
 }
-.tk-content h4 {
-  font-size: 1.25rem;
-  font-weight: 400;
-}
+.tk-content h4,
 .tk-content h5 {
+  font-size: 1.1rem;
+  line-height: 1.25;
+  padding-top: .8rem;
+}
+
+.tk-content h6 {
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 700;
+  line-height: 1.25;
+  padding-top: .8rem;
+  text-transform: uppercase;
 }
 
 .tk-content > h1:not(:first-child) {
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 
 .tk-content p {
