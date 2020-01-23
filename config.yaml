@@ -12,5 +12,5 @@ markup:
       unsafe: true
     tableOfContents:
       endLevel: 3
-      ordered: false
+      ordered: true
       startLevel: 2
