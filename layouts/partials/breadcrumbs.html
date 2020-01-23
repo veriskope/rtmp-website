@@ -1,0 +1,16 @@
+{{ define "breadcrumb" }}
+  {{ $parent := .page.Parent }}
+  {{ if $parent }}
+    {{ $value := (printf "<a href='%s'>%s</a> > %s" $parent.URL $parent.Title .value) }}
+    {{ template "breadcrumb" dict "page" $parent "value" $value }}
+  {{ else }}
+    {{ .value|safeHTML }}
+  {{ end }}
+{{ end }}
+
+<div class="breadcrumbs d-block" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+  <span class="links">
+    {{ $title := (or .Params.menuTitle .Title) }}
+    {{ template "breadcrumb" dict "page" . "value" $title }}
+  </span>
+</div>
