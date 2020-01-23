@@ -300,6 +300,15 @@ img {
   line-height: 1.5;
 }
 
+.tk-content svg {
+  fill: #a1a1a1;
+  transition: fill 0.4s ease;
+}
+
+.tk-content svg:hover {
+  fill: #ce0201;
+}
+
 .tk-content h1 {
   color: #4c4c4c;
   font-size: 3rem;
