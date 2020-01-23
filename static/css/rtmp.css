@@ -311,27 +311,27 @@ img {
   color: #4c4c4c;
   font-size: 2.25rem;
   line-height: 1.25;
-  padding-top: 1rem;
+  margin-top: 1rem;
 }
 .tk-content h3 {
   border-bottom: 1px solid black;
   font-size: 1.1rem;
   line-height: 1.25;
-  padding-top: .8rem;
+  margin-top: .8rem;
   text-transform: uppercase;
 }
 .tk-content h4,
 .tk-content h5 {
   font-size: 1.1rem;
   line-height: 1.25;
-  padding-top: .8rem;
+  margin-top: .8rem;
 }
 
 .tk-content h6 {
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.25;
-  padding-top: .8rem;
+  margin-top: .8rem;
   text-transform: uppercase;
 }
 
@@ -378,8 +378,8 @@ img {
 .tk-content > h4[id]::before
 {
 	display: block;
-	height: 6rem;
-	margin-top: -6rem;
+	height: 6.8rem;
+	margin-top: -6.8rem;
 	visibility: hidden;
 	content: "";
 }
