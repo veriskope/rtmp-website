@@ -8,7 +8,7 @@
   {{ end }}
 {{ end }}
 
-<div class="breadcrumbs d-block" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<div class="breadcrumbs d-block navbar" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
   <span class="links">
     {{ $title := (or .Params.menuTitle .Title) }}
     {{ template "breadcrumb" dict "page" . "value" $title }}
