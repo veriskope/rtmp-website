@@ -1,4 +1,4 @@
-{{ partial "header" . }}
+{{ define "main" }}
 
 <header class="d-flex flex-column flex-md-row align-items-md-center p-5 bg-light tk-lead">
   <div class="pt-md-3 tk-single">
@@ -11,4 +11,4 @@
   {{ .Content }}
 </main>
 
-{{ partial "footer" . }}
+{{ end }}

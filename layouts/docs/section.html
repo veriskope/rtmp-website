@@ -23,7 +23,28 @@
       </form>
 
       <nav class="tk-links collapse" id="tk-docs-nav">
-          {{ .TableOfContents }}
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.docs }}
+          {{ if .HasChildren }}
+            {{ $firstChild := index (.Children) 0 }}
+            <div class="tk-toc-item">
+              <a class="tk-toc-link" href="{{ $firstChild.URL }}">
+                {{ .Name }}
+              </a>
+              <ul class="nav tk-sidenav">
+              {{ range .Children }}
+                <li><a href="{{ .URL }}" class="">{{ .Name }}</a></li>
+              {{ end }}
+              </ul>
+            </div>
+          {{ else }}
+            <div class="tk-toc-item">
+              <a class="tk-toc-link" href="{{ .URL }}">
+                {{ .Name }}
+              </a>
+            </div>
+          {{ end }}
+        {{ end }}
       </nav>
 
     </div>
@@ -37,6 +58,7 @@
       <h1 class="tk-title">{{ .Title }}</h1>
 
       {{ partial "headline-hash.html" .Content }}
+
       <!-- Yes prev... because hugo bugs -->
       {{ with .PrevInSection }}
         <div class="tk-next">

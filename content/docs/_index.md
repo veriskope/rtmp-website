@@ -1,10 +1,7 @@
 ---
-title: "Overview" 
-weight: 1 
-menu: "docs"
+title: "Documentation"
+weight: 1
 ---
-
-# Real Time Messaging Protocol Overview
 
 Real Time Messaging Protocol (RTMP) was designed to support very low-latency for
 interactive, multiparty applications with seamless integration of live or
@@ -28,7 +25,7 @@ RTMP supports multiple transports:
 * HTTP/S
 * UDP via [RTMFP](https://tools.ietf.org/html/rfc7425)
 
-### Multiplexed Streams
+## Multiplexed Streams
 
 An RTMP connection multiplexes one or more streams. Each stream is a logical
 channel, carrying messages of one type for a single audio, video or data stream.
@@ -65,6 +62,6 @@ For more detail, see [chunk format](spec/chunk-format).
 ## Command Messages
 A client or a server can make a Remote Procedure Call (RPC) using command
 messages to the peer. Command messages carry AMF encoded commands between the
-client and the server. 
+client and the server.
 
 TO DO: add detail here

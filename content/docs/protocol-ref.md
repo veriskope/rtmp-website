@@ -4,7 +4,6 @@ weight: 2
 menu: "docs"
 ---
 
-<p>Protocol Specs</p>
 <ul>
 <li><a href="https://tools.ietf.org/html/rfc7425" rel="nofollow" target="_blank">RTMFP</a>, IETF Independent Submission, Category: Informational, December 2014</li>
 <li><a href="https://www.adobe.com/content/dam/acom/en/devnet/rtmp/pdf/rtmp_specification_1.0.pdf" rel="nofollow" target="_blank">Adobe RTMP Specification</a></li>
