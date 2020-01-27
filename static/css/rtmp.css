@@ -36,6 +36,12 @@ img {
   border-color: #ce0201;
 }
 
+figcaption {
+  color: #4c4c4c;
+  font-size: .85rem;
+  margin-top: -.7rem;
+}
+
 /*
  *
  * ===== Navbar =====
