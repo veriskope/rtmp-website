@@ -126,8 +126,10 @@ The C0 and S0 packets are a single octet, treated as a single 8-bit integer fiel
 +-+-+-+-+-+-+-+-+
 |    version    |
 +-+-+-+-+-+-+-+-+
- C0 and S0 bits
-</pre></figure>
+</pre>
+<figcaption>C0 and S0 bits</figcaption>
+</figure>
+
 
 Following are the fields in the C0/S0 packets:
 
@@ -152,8 +154,9 @@ The C1 and S1 packets are 1536 octets long, consisting of the following fields:
 |                           (cont)                              |
 |                             ...                               |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-                        C1 and S1 bits
-</pre></figure>
+</pre>
+<figcaption>C1 and S1 bits</figcaption>
+</figure>
 
 **Time (4 bytes)**: This field contains a timestamp, which SHOULD be used as the epoch for all future chunks sent from this endpoint. This may be 0, or some arbitrary value. To synchronize multiple chunkstreams, the endpoint may wish to send the current value of the other chunkstream’s timestamp.
 
@@ -180,11 +183,11 @@ The C2 and S2 packets are 1536 octets long, and nearly an echo of S1 and C1 (res
 |                            (cont)                             |
 |                              ...                              |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-                         C2 and S2 bits
-</pre></figure>
+</pre>
+<figcaption>C2 and S2 bits</figcaption>
+</figure>
 
 **Time (4 bytes)**: This field MUST contain the timestamp sent by the peer in S1 (for C2) or C1 (for S2).
-
 
 **Time2 (4 bytes)**: This field MUST contain the timestamp at which the previous packet(s1 or c1) sent by the peer was read.
 
