@@ -315,6 +315,11 @@ figcaption {
   transition: fill 0.4s ease;
 }
 
+.tk-content strong {
+  color: #4c4c4c;
+  font-variant: small-caps;
+}
+
 .tk-content svg:hover,
 .tk-content svg:focus {
   fill: #ce0201;
