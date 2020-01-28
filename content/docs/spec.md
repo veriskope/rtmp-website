@@ -120,13 +120,16 @@ The server MUST wait until C0 has been received before sending S0 and S1, and MA
 #### 5.2.2.	C0 and S0 Format
 
 The C0 and S0 packets are a single octet, treated as a single 8-bit integer field:
-```
+
+<figure><pre>
  0 1 2 3 4 5 6 7
 +-+-+-+-+-+-+-+-+
 |    version    |
 +-+-+-+-+-+-+-+-+
- C0 and S0 bits
- ```
+</pre>
+<figcaption>C0 and S0 bits</figcaption>
+</figure>
+
 
 Following are the fields in the C0/S0 packets:
 
@@ -136,7 +139,8 @@ Following are the fields in the C0/S0 packets:
 #### 5.2.3.	C1 and S1 Format
 
 The C1 and S1 packets are 1536 octets long, consisting of the following fields:
-```
+
+<figure><pre>
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -150,8 +154,10 @@ The C1 and S1 packets are 1536 octets long, consisting of the following fields:
 |                           (cont)                              |
 |                             ...                               |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-                        C1 and S1 bits
-```
+</pre>
+<figcaption>C1 and S1 bits</figcaption>
+</figure>
+
 **Time (4 bytes)**: This field contains a timestamp, which SHOULD be used as the epoch for all future chunks sent from this endpoint. This may be 0, or some arbitrary value. To synchronize multiple chunkstreams, the endpoint may wish to send the current value of the other chunkstream’s timestamp.
 
 **Zero (4 bytes)**: This field MUST be all 0s.
@@ -162,7 +168,8 @@ The C1 and S1 packets are 1536 octets long, consisting of the following fields:
 #### 5.2.4. C2 and S2 Format
 
 The C2 and S2 packets are 1536 octets long, and nearly an echo of S1 and C1 (respectively), consisting of the following fields:
-```
+
+<figure><pre>
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -176,10 +183,11 @@ The C2 and S2 packets are 1536 octets long, and nearly an echo of S1 and C1 (res
 |                            (cont)                             |
 |                              ...                              |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-                         C2 and S2 bits
-```
-**Time (4 bytes)**: This field MUST contain the timestamp sent by the peer in S1 (for C2) or C1 (for S2).
+</pre>
+<figcaption>C2 and S2 bits</figcaption>
+</figure>
 
+**Time (4 bytes)**: This field MUST contain the timestamp sent by the peer in S1 (for C2) or C1 (for S2).
 
 **Time2 (4 bytes)**: This field MUST contain the timestamp at which the previous packet(s1 or c1) sent by the peer was read.
 
@@ -188,12 +196,12 @@ The C2 and S2 packets are 1536 octets long, and nearly an echo of S1 and C1 (res
 
 #### 5.2.5.	Handshake Diagram
 
-```
+<figure><pre>
 +-------------+                           +-------------+
 |    Client   |       TCP/IP Network      |    Server   |
 +-------------+            |              +-------------+
       |                    |                     |
- Uninitialized              |               Uninitialized
+ Uninitialized             |               Uninitialized
       |          C0        |                     |
       |------------------->|         C0          |
       |                    |-------------------->|
@@ -218,8 +226,9 @@ The C2 and S2 packets are 1536 octets long, and nearly an echo of S1 and C1 (res
       |                    |-------------------->|
  Handshake Done            |               Handshake Done
       |                    |                     |
-```
-Pictorial Representation of Handshake
+</pre>
+<figcaption>Pictorial Representation of Handshake</figcaption>
+</figure>
 
 The following describes the states mentioned in the handshake diagram:
 
@@ -247,14 +256,16 @@ The chunk size is configurable. It can be set using a Set Chunk Size control mes
 
 
 Each chunk consists of a header and data. The header itself has three parts:
-```
+
+<figure><pre>
 +--------------+----------------+--------------------+--------------+
 | Basic Header | Message Header | Extended Timestamp |  Chunk Data  |
 +--------------+----------------+--------------------+--------------+
 |                                                    |
 |<------------------- Chunk Header ----------------->|
-```
-Chunk Format
+</pre>
+<figcaption>Chunk Format</figcaption>
+</figure>
 
 **Basic Header (1 to 3 bytes)**: This field encodes the chunk stream ID and the chunk type. Chunk type determines the format of the encoded message header. The length depends entirely on the chunk stream ID, which is a variable-length field.
 
@@ -276,35 +287,38 @@ The protocol supports up to 65597 streams with IDs 3-65599. The IDs 0, 1, and 2 
 The bits 0-5 (least significant) in the chunk basic header represent the chunk stream ID.
 
 Chunk stream IDs 2-63 can be encoded in the 1-byte version of this field.
-```
+
+<figure><pre>
  0 1 2 3 4 5 6 7
 +-+-+-+-+-+-+-+-+
 |fmt|   cs id   |
 +-+-+-+-+-+-+-+-+
-```
-Chunk basic header 1
-
+</pre>
+<figcaption>Chunk basic header 1</figcaption>
+</figure>
 
 Chunk stream IDs 64-319 can be encoded in the 2-byte form of the header. ID is computed as (the second byte + 64).
-```
+
+<figure><pre>
  0                   1
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |fmt|     0     |   cs id - 64  |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-```
-Chunk basic header 2
-
+</pre>
+<figcaption>Chunk basic header 2</figcaption>
+</figure>
 
 Chunk stream IDs 64-65599 can be encoded in the 3-byte version of this field. ID is computed as ((the third byte)\*256 + (the second byte) + 64).
-```
+
+<figure><pre>
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |fmt|     1     |          cs id - 64           |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-```
-Chunk basic header 3
-
+</pre>
+<figcaption>Chunk basic header 3</figcaption>
+</figure>
 
 **cs id (6 bits)**: This field contains the chunk stream ID, for values from 2-63. Values 0 and 1 are used to indicate the 2- or 3-byte versions of this field.
 
@@ -325,7 +339,8 @@ An implementation SHOULD use the most compact representation possible for each c
 ###### 5.3.1.2.1.	Type 0
 
 Type 0 chunk headers are 11 bytes long. This type MUST be used at the start of a chunk stream, and whenever the stream timestamp goes backward (e.g., because of a backward seek).
-```
+
+<figure><pre>
 0                   1                   2                   3
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -335,15 +350,17 @@ Type 0 chunk headers are 11 bytes long. This type MUST be used at the start of a
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |            message stream id (cont)           |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-```
-Chunk Message Header - Type 0
+</pre>
+<figcaption>Chunk Message Header - Type 0</figcaption>
+</figure>
 
 ***timestamp (3 bytes)***: For a type-0 chunk, the absolute timestamp of the message is sent here. If the timestamp is greater than or equal to 16777215 (hexadecimal 0xFFFFFF), this field MUST be 16777215, indicating the presence of the Extended Timestamp field to encode the full 32 bit timestamp. Otherwise, this field SHOULD be the entire timestamp.
 
 
 ###### 5.3.1.2.2. Type 1
 Type 1 chunk headers are 7 bytes long. The message stream ID is not included; this chunk takes the same stream ID as the preceding chunk. Streams with variable-sized messages (for example, many video formats) SHOULD use this format for the first chunk of each new message after the first.
-```
+
+<figure><pre>
 0                   1                   2                   3
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -351,29 +368,30 @@ Type 1 chunk headers are 7 bytes long. The message stream ID is not included; th
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |     message length (cont)     |message type id|
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-```
-Chunk Message Header - Type 1
+</pre>
+<figcaption>Chunk Message Header - Type 1</figcaption>
+</figure>
 
 
 ###### 5.3.1.2.3. Type 2
 
 Type 2 chunk headers are 3 bytes long. Neither the stream ID nor the message length is included; this chunk has the same stream ID and message length as the preceding chunk. Streams with constant-sized messages (for example, some audio and data formats) SHOULD use this format for the first chunk of each message after the first.
-```
+
+<figure><pre>
 0                   1                   2
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |               timestamp delta                 |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-```
-Chunk Message Header - Type 2
+</pre>
+<figcaption>Chunk Message Header - Type 2</figcaption>
+</figure>
 
 
 ###### 5.3.1.2.4. Type 3
 
 
 Type 3 chunks have no message header. The stream ID, message length and timestamp delta fields are not present; chunks of this type take values from the preceding chunk for the same Chunk Stream ID. When a single message is split into chunks, all chunks of a message except the first one SHOULD use this type. Refer to Example 2 (Section 5.3.2.2). A stream consisting of messages of exactly the same size, stream ID and spacing in time SHOULD use this type for all chunks after a chunk of Type 2. Refer to Example 1 (Section 5.3.2.1). If the delta between the first message and the second message is same as the timestamp of the first message, then a chunk of Type 3 could immediately follow the chunk of Type 0 as there is no need for a chunk of Type 2 to register the delta. If a Type 3 chunk follows a Type 0 chunk, then the timestamp delta for this Type 3 chunk is the same as the timestamp of the Type 0 chunk.
-
-TODO: link to the examples mentioned in the paragraph above.
 
 ###### 5.3.1.2.5. Common Header Fields
 
@@ -398,8 +416,9 @@ The Extended Timestamp field is used to encode timestamps or timestamp deltas th
 
 ##### 5.3.2.1. Example 1
 
-This example shows a simple stream of audio messages. This example demonstrates the redundancy of information
-```
+This example shows a simple stream of audio messages. This example demonstrates the redundancy of information:
+
+<figure><pre>
 +---------+-----------------+-----------------+-----------------+
 |         |Message Stream ID| Message TYpe ID | Time  | Length  |
 +---------+-----------------+-----------------+-------+---------+
@@ -411,11 +430,14 @@ This example shows a simple stream of audio messages. This example demonstrates 
 +---------+-----------------+-----------------+-------+---------+
 | Msg # 4 |    12345        |         8       | 1060  |   32    |
 +---------+-----------------+-----------------+-------+---------+
-```
-Sample audio messages to be made into chunks
+</pre>
+<figcaption>Sample audio messages to be made into chunks</figcaption>
+</figure>
+
 
 The next table shows chunks produced in this stream. From message 3 onward, data transmission is optimized. There is only 1 byte of overhead per message beyond this point.
-```
+
+<figure><pre>
 +--------+---------+-----+------------+-----------+------------+
 |        | Chunk   |Chunk|Header Data |No.of Bytes|Total No.of |
 |        |Stream ID|Type |            |  After    |Bytes in the|
@@ -437,24 +459,29 @@ The next table shows chunks produced in this stream. From message 3 onward, data
 |Chunk#4 |    3    |  3  | none (0    |   32      |    33      |
 |        |         |     | bytes)     |           |            |
 +--------+---------+-----+------------+-----------+------------+
-```
-Format of each of the chunks of audio messages
+</pre>
+<figcaption>Format of each of the chunks of audio messages</figcaption>
+</figure>
 
 
 ##### 5.3.2.2. Example 2
 
 This example illustrates a message that is too long to fit in a 128-byte chunk and is broken into several chunks
-```
+
+<figure><pre>
 +-----------+-------------------+-----------------+-----------------+
 |           | Message Stream ID | Message TYpe ID | Time  | Length  |
 +-----------+-------------------+-----------------+-----------------+
 | Msg # 1   |       12346       |    9 (video)    | 1000  |   307   |
 +-----------+-------------------+-----------------+-----------------+
-```
-Sample Message to be broken to chunks
+</pre>
+<figcaption>Sample Message to be broken to chunks</figcaption>
+</figure>
+
 
 Here are the chunks that are produced:
-```
+
+<figure><pre>
 +-------+------+-----+-------------+-----------+------------+
 |       |Chunk |Chunk|Header       |No. of     |Total No. of|
 |       |Stream| Type|Data         |Bytes after| bytes in   |
@@ -473,8 +500,9 @@ Here are the chunks that are produced:
 |Chunk#3|  4   |  3  | none (0     |  51       |   52       |
 |       |      |     | bytes)      |           |            |
 +-------+------+-----+-------------+-----------+------------+
-```
-Format of each of the chunks
+</pre>
+<figcaption>Format of each of the chunks</figcaption>
+</figure>
 
 The header data of chunk 1 specifies that the overall message is 307 bytes.
 
@@ -495,14 +523,16 @@ Protocol control message 1, Set Chunk Size, is used to notify the peer of a new 
 The maximum chunk size defaults to 128 bytes, but the client or the server can change this value, and updates its peer using this message. For example, suppose a client wants to send 131 bytes of audio data and the chunk size is 128. In this case, the client can send this message to the server to notify it that the chunk size is now 131 bytes. The client can then send the audio data in a single chunk.
 
 The maximum chunk size SHOULD be at least 128 bytes, and MUST be at least 1 byte. The maximum chunk size is maintained independently for each direction.
-```
+
+<figure><pre>
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |0|                     chunk size (31 bits)                    |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-```
-Payload for the ‘Set Chunk Size’ protocol message
+</pre>
+<figcaption>Payload for the ‘Set Chunk Size’ protocol message</figcaption>
+</figure>
 
 **0**: This bit MUST be zero.
 
@@ -512,14 +542,16 @@ Payload for the ‘Set Chunk Size’ protocol message
 #### 5.4.2.	Abort Message (2)
 
 Protocol control message 2, Abort Message, is used to notify the peer if it is waiting for chunks to complete a message, then to discard the partially received message over a chunk stream. The peer receives the chunk stream ID as this protocol message’s payload. An application may send this message when closing in order to indicate that further processing of the messages is not required.
-```
+
+<figure><pre>
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |                       chunk stream id (32 bits)               |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-```
-Payload for the ‘Abort Message’ protocol message
+</pre>
+<figcaption>Payload for the ‘Abort Message’ protocol message</figcaption>
+</figure>
 
 **chunk stream ID (32 bits)**: This field holds the chunk stream ID, whose current message is to be discarded.
 
@@ -527,14 +559,16 @@ Payload for the ‘Abort Message’ protocol message
 #### 5.4.3.	Acknowledgement (3)
 
 The client or the server MUST send an acknowledgment to the peer after receiving bytes equal to the window size. The window size is the maximum number of bytes that the sender sends without receiving acknowledgment from the receiver. This message specifies the sequence number, which is the number of the bytes received so far.
-```
+
+<figure><pre>
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |                      sequence number (4 bytes)                |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-```
-Payload for the ‘Acknowledgement’ protocol message
+</pre>
+<figcaption>Payload for the ‘Acknowledgement’ protocol message</figcaption>
+</figure>
 
 **sequence number (32 bits)**: This field holds the number of bytes received so far.
 
@@ -542,20 +576,22 @@ Payload for the ‘Acknowledgement’ protocol message
 #### 5.4.4.	Window Acknowledgement Size (5)
 
 The client or the server sends this message to inform the peer of the window size to use between sending acknowledgments. The sender expects acknowledgment from its peer after the sender sends window size bytes. The receiving peer MUST send an Acknowledgement (Section 5.4.3) after receiving the indicated number of bytes since the last Acknowledgement was sent, or from the beginning of the session if no Acknowledgement has yet been sent.
-```
+
+<figure><pre>
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |            Acknowledgement Window size (4 bytes)              |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-```
-Payload for the ‘Window Acknowledgement Size’ protocol message
-
+</pre>
+<figcaption>Payload for the ‘Window Acknowledgement Size’ protocol message</figcaption>
+</figure>
 
 #### 5.4.5.	Set Peer Bandwidth (6)
 
 The client or the server sends this message to limit the output bandwidth of its peer. The peer receiving this message limits its output bandwidth by limiting the amount of sent but unacknowledged data to the window size indicated in this message. The peer receiving this message SHOULD respond with a Window Acknowledgement Size message if the window size is different from the last one sent to the sender of this message.
-```
+
+<figure><pre>
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -563,8 +599,9 @@ The client or the server sends this message to limit the output bandwidth of its
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |  Limit Type   |
 +-+-+-+-+-+-+-+-+
-```
-Payload for the ‘Set Peer Bandwidth’ protocol message
+</pre>
+<figcaption>Payload for the ‘Set Peer Bandwidth’ protocol message</figcaption>
+</figure>
 
 The Limit Type is one of the following values:
 
@@ -600,7 +637,8 @@ The message header contains the following:
 **Timestamp**:	Four-byte field that contains a timestamp of the message. The 4 bytes are packed in the big-endian order.
 
 **Message Stream Id**: Three-byte field that identifies the stream of the message. These bytes are set in big-endian format.
-```
+
+<figure><pre>
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -613,8 +651,9 @@ The message header contains the following:
 |                 Stream ID                     |
 |                 (3 bytes)                     |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-```
-Message header
+</pre>
+<figcaption>Message header</figcaption>
+</figure>
 
 
 #### 6.1.2. Message Payload
@@ -629,12 +668,14 @@ RTMP uses message type ID 4 for User Control messages. These messages contain in
 User Control messages SHOULD use message stream ID 0 (known as the control stream) and, when sent over RTMP Chunk Stream, be sent on chunk stream ID 2. User Control messages are effective at the point they are received in the stream; their timestamps are ignored.
 
 The client or the server sends this message to notify the peer about the user control events. This message carries Event type and Event data.
-```
+
+<figure><pre>
 +------------------------------+-------------------------
 |      Event Type (16 bits)    | Event Data
 +------------------------------+-------------------------
-```
-Payload for the ‘User Control’ protocol message
+</pre>
+<figcaption>Payload for the ‘User Control’ protocol message</figcaption>
+</figure>
 
 The first 2 bytes of the message data are used to identify the Event type.	Event type is followed by Event data.	The size of Event Data field is variable.	However, in cases where the message has to pass through the RTMP Chunk Stream layer, the maximum chunk size (Section 5.4.1) SHOULD be large enough to allow these messages to fit in a single chunk.
 
@@ -666,7 +707,8 @@ The client or the server sends this message to send Metadata or any user data to
 #### 7.1.3.	Shared Object Message (19, 16)
 
 A shared object is a Flash object (a collection of name value pairs) that are in synchronization across multiple clients, instances, and so on. The message types 19 for AMF0 and 16 for AMF3 are reserved for shared object events. Each message can contain multiple events.
-```
+
+<figure><pre>
 +------+------+-------+-----+-----+------+-----+ +-----+------+-----+
 |Header|Shared|Current|Flags|Event|Event |Event|.|Event|Event |Event|
 |      |Object|Version|     |Type |data  |data |.|Type |data  |data |
@@ -675,9 +717,11 @@ A shared object is a Flash object (a collection of name value pairs) that are in
        |                                                            |
        |<- - - - - - - - - - - - - - - - - - - - - - - - - - - - - >|
        |              AMF Shared Object Message body                |
-```
+</pre>
+<figcaption>The shared object message format</figcaption>
+</figure>
 
-The shared object message format
+
 
 The following event types are supported:
 
@@ -710,20 +754,23 @@ The client or the server sends this message to send video data to the peer. The 
 #### 7.1.6.	Aggregate Message (22)
 
 An aggregate message is a single message that contains a series of RTMP sub-messages using the format described in Section 6.1. Message type 22 is used for aggregate messages.
-```
+
+<figure><pre>
 +---------+-------------------------+
 | Header  | Aggregate Message body  |
 +---------+-------------------------+
-```
-The Aggregate Message format
+</pre>
+<figcaption>The Aggregate Message format</figcaption>
+</figure>
 
-```
+<figure><pre>
 +--------+-------+---------+--------+-------+---------+ - - - -
 |Header 0|Message|Back     |Header 1|Message|Back     |
 |        |Data 0 |Pointer 0|        |Data 1 |Pointer 1|
 +--------+-------+---------+--------+-------+---------+ - - - -
-```
-The Aggregate Message body format
+</pre>
+<figcaption>The Aggregate Message body format</figcaption>
+</figure>
 
 The message stream ID of the aggregate message overrides the message stream IDs of the sub-messages inside the aggregate.
 
@@ -732,7 +779,6 @@ The difference between the timestamps of the aggregate message and the first sub
 The back pointer contains the size of the previous message including its header. It is included to match the format of FLV file and is used for backward seek.
 
 Using aggregate messages has several performance benefits:
-
 
 - The chunk stream can send at most a single complete message within a chunk. Therefore, increasing the chunk size and using the aggregate message reduces the number of chunks sent.
 - The sub-messages can be stored contiguously in memory. It is more efficient when making system calls to send the data on the network.
@@ -753,7 +799,6 @@ The following user control event types are supported:
 | StreamIs Recorded (=4) | The server sends this event to notify the client that the stream is a recorded stream. The 4 bytes event data represent the stream ID of the recorded stream. |
 | PingRequest (=6) | The server sends this event to test whether the client is reachable. Event data is a 4-byte timestamp, representing the local server time when the server dispatched the command. The client responds with PingResponse on receiving MsgPingRequest. |
 | PingResponse (=7) | The client sends this event to the server in response to the ping request. The event data is a 4-byte timestamp, which was received with the PingRequest request. |
-
 
 
 ### 7.2.	Types of Commands
@@ -786,7 +831,8 @@ The following commands can be sent on the NetConnection:
 The client sends the connect command to the server to request connection to a server application instance.
 
 The command structure from the client to the server is as follows:
-```
+
+<figure><pre>
 +----------------+---------+---------------------------------------+
 |  Field Name    |  Type   |           Description                 |
 +--------------- +---------+---------------------------------------+
@@ -800,10 +846,10 @@ The command structure from the client to the server is as follows:
 | Optional User  | Object  | Any optional information              |
 | Arguments      |         |                                       |
 +----------------+---------+---------------------------------------+
-```
+</pre></figure>
 
 Following is the description of the name-value pairs used in Command Object of the connect command.
-```
+<figure><pre>
 +-----------+--------+-----------------------------+----------------+
 | Property  |  Type  |        Description          | Example Value  |
 +-----------+--------+-----------------------------+----------------+
@@ -841,9 +887,11 @@ Following is the description of the name-value pairs used in Command Object of t
 | object    | Number | AMF encoding method.        |     AMF3       |
 | Encoding  |        |                             |                |
 +-----------+--------+-----------------------------+----------------+
-```
+</pre></figure>
+
 Flag values for the audioCodecs property:
-```
+
+<figure><pre>
 +----------------------+----------------------------+--------------+
 |      Codec Flag      |          Usage             |     Value    |
 +----------------------+----------------------------+--------------+
@@ -880,9 +928,11 @@ Flag values for the audioCodecs property:
 | SUPPORT_SND_ALL      | All RTMP-supported audio   |    0x0FFF    |
 |                      | codecs                     |              |
 +----------------------+----------------------------+--------------+
-```
+</pre></figure>
+
 Flag values for the videoCodecs Property:
-```
+
+<figure><pre>
 +----------------------+----------------------------+--------------+
 |      Codec Flag      |            Usage           |    Value     |
 +----------------------+----------------------------+--------------+
@@ -908,9 +958,11 @@ Flag values for the videoCodecs Property:
 | SUPPORT_VID_ALL      | All RTMP-supported video   |    0x00FF    |
 |                      | codecs                     |              |
 +----------------------+----------------------------+--------------+
-```
+</pre></figure>
+
 Flag values for the videoFunction property:
-```
+
+<figure><pre>
 +----------------------+----------------------------+--------------+
 |    Function Flag     |           Usage            |     Value    |
 +----------------------+----------------------------+--------------+
@@ -918,9 +970,11 @@ Flag values for the videoFunction property:
 | _SEEK                | can perform frame-accurate |              |
 |                      | seeks.                     |              |
 +----------------------+----------------------------+--------------+
-```
+</pre></figure>
+
 Values for the object encoding property:
-```
+
+<figure><pre>
 +----------------------+----------------------------+--------------+
 |    Encoding Type     |           Usage            |    Value     |
 +----------------------+----------------------------+--------------+
@@ -931,9 +985,11 @@ Values for the object encoding property:
 |        AMF3          | AMF3 encoding from         |      3       |
 |                      | Flash 9 (AS3)              |              |
 +----------------------+----------------------------+--------------+
-```
+</pre></figure>
+
 The command structure from server to client is as follows:
-```
+
+<figure><pre>
 +--------------+----------+----------------------------------------+
 | Field Name   |   Type   |             Description                |
 +--------------+----------+----------------------------------------+
@@ -953,8 +1009,9 @@ The command structure from server to client is as follows:
 |              |          | ’level’, ’description’ are names of few|
 |              |          | among such information.                |
 +--------------+----------+----------------------------------------+
-```
-```
+</pre></figure>
+
+<figure><pre>
 +--------------+                              +-------------+
 |    Client    |             |                |    Server   |
 +------+-------+             |                +------+------+
@@ -976,8 +1033,9 @@ The command structure from server to client is as follows:
        |<------------ Command Message ---------------|              
        |       (_result- connect response)           |
        |                                             |
-```
-Message flow in the connect command
+</pre>
+<figcaption>Message flow in the connect command</figcaption>
+</figure>
 
 The message flow during the execution of the command is:
 
@@ -986,7 +1044,7 @@ The message flow during the execution of the command is:
 3. The server sends the protocol message ’Set Peer Bandwidth’ to the client.
 4. The client sends the protocol message ’Window Acknowledgement Size’ to the server after processing the protocol message ’Set Peer Bandwidth’.
 5. The server sends an another protocol message of type User Control Message(StreamBegin) to the client.
-6. The server sends the result command message informing the client of the connection status (success/fail). The command specifies the transaction ID (always equal to 1 for the connect command). The message also specifies the properties, such as Flash Media Server version (string). In addition it specificies other connection response related information like level (string), code (string), description (string), objectencoding (number), etc.
+6. The server sends the result command message informing the client of the connection status (success/fail). The command specifies the transaction ID (always equal to 1 for the connect command). The message also specifies the properties, such as Flash Media Server version (string). In addition it specifies other connection response related information like level (string), code (string), description (string), object encoding (number), etc.
 
 
 ##### 7.2.1.2.	Call
@@ -994,7 +1052,8 @@ The message flow during the execution of the command is:
 The call method of the NetConnection object runs remote procedure calls (RPC) at the receiving end. The called RPC name is passed as a parameter to the call command.
 
 The command structure from the sender to the receiver is as follows:
-```
+
+<figure><pre>
 +--------------+----------+----------------------------------------+
 |Field Name    |   Type   |             Description                |
 +--------------+----------+----------------------------------------+
@@ -1011,11 +1070,11 @@ The command structure from the sender to the receiver is as follows:
 | Optional     |  Object  | Any optional arguments to be provided  |
 | Arguments    |          |                                        |
 +--------------+----------+----------------------------------------+
-```
+</pre></figure>
 
 The command structure of the response is as follows:
 
-```
+<figure><pre>
  +--------------+----------+----------------------------------------+
  | Field Name   |   Type   |             Description                |
  +--------------+----------+----------------------------------------+
@@ -1031,7 +1090,7 @@ The command structure of the response is as follows:
  | Response     | Object   | Response from the method that was      |
  |              |          | called.                                |
  +------------------------------------------------------------------+
-```
+</pre></figure>
 
 ##### 7.2.1.3.	createStream
 
@@ -1040,7 +1099,8 @@ The client sends this command to the server to create a logical channel for mess
 NetConnection is the default communication channel, which has a stream ID 0. Protocol and a few command messages, including createStream, use the default communication channel.
 
 The command structure from the client to the server is as follows:
-```
+
+<figure><pre>
 +--------------+----------+----------------------------------------+
 | Field Name   |   Type   |             Description                |
 +--------------+----------+----------------------------------------+
@@ -1053,9 +1113,11 @@ The command structure from the client to the server is as follows:
 | Command      |  Object  | If there exists any command info this  |
 | Object       |          | is set, else this is set to null type. |
 +--------------+----------+----------------------------------------+
-```
+</pre></figure>
+
 The command structure from server to client is as follows:
-```
+
+<figure><pre>
 +--------------+----------+----------------------------------------+
 | Field Name   |   Type   |             Description                |
 +--------------+----------+----------------------------------------+
@@ -1071,7 +1133,7 @@ The command structure from server to client is as follows:
 | Stream       |  Number  | The return value is either a stream ID |
 | ID           |          | or an error information object.        |
 +--------------+----------+----------------------------------------+
-```
+</pre></figure>
 
 
 #### 7.2.2.	NetStream Commands
@@ -1092,7 +1154,8 @@ The following commands can be sent on the NetStream by the client to the server:
 - pause
 
 The server sends NetStream status updates to the client using the "onStatus" command:
-```
+
+<figure><pre>
 +--------------+----------+----------------------------------------+
 | Field Name   |   Type   |             Description                |
 +--------------+----------+----------------------------------------+
@@ -1115,8 +1178,9 @@ The server sends NetStream status updates to the client using the "onStatus" com
 |              |          | The Info object MAY contain other      |
 |              |          | properties as appropriate to the code. |
 +--------------+----------+----------------------------------------+
-```
-Format of NetStream status message commands.
+</pre>
+<figcaption>Format of NetStream status message commands.</figcaption>
+</figure>
 
 
 ##### 7.2.2.1.	play
@@ -1126,7 +1190,8 @@ The client sends this command to the server to play a stream. A playlist can als
 If you want to create a dynamic playlist that switches among different live or recorded streams, call play more than once and pass false for reset each time. Conversely, if you want to play the specified stream immediately, clearing any other streams that are queued for play, pass true for reset.
 
 The command structure from the client to the server is as follows:
-```
+
+<figure><pre>
 +--------------+----------+-----------------------------------------+
 | Field Name   |   Type   |             Description                 |
 +--------------+----------+-----------------------------------------+
@@ -1201,9 +1266,9 @@ The command structure from the client to the server is as follows:
 |              |          | that specifies whether to flush any     |
 |              |          | previous playlist.                      |
 +--------------+----------+-----------------------------------------+
-```
+</pre></figure>
 
-```
+<figure><pre>
      +-------------+                            +------------+
      | Play Client |             |              |   Server   |
      +------+------+             |              +------+-----+
@@ -1237,9 +1302,9 @@ Stream|     |                                          |
       |     |                    |                     |
                                  |
         Keep receiving audio and video stream till finishes
-```
-
-Message flow in the play command
+</pre>
+<figcaption>Message flow in the play command</figcaption>
+</figure>
 
 The message flow during the execution of the command is:
 
@@ -1249,8 +1314,7 @@ The message flow during the execution of the command is:
 1. The server sends another protocol message (user control) specifying the event ’StreamBegin’, to indicate beginning of the streaming to the client.
 2. The server sends an onStatus command messages NetStream.Play.Start & NetStream.Play.Reset if the play command sent by the client is successful. NetStream.Play.Reset is sent by the server only if the play command sent by the client has set the reset flag. If the stream to be played is not found, the Server sends the onStatus message NetStream.Play.StreamNotFound.
 
-    After this, the server sends audio and video data, which the client plays.
-
+After this, the server sends audio and video data, which the client plays.
 
 
 ##### 7.2.2.2.	play2
@@ -1259,7 +1323,7 @@ Unlike the play command, play2 can switch to a different bit rate stream without
 
 The command structure from the client to the server is as follows:
 
-```
+<figure><pre>
 +--------------+----------+----------------------------------------+
 | Field Name   |   Type   |             Description                |
 +--------------+----------+----------------------------------------+
@@ -1276,11 +1340,13 @@ The command structure from the client to the server is as follows:
 |              |          | for the flash.net.NetStreamPlayOptions |
 |              |          | ActionScript object.                   |
 +--------------+----------+----------------------------------------+
-```
+</pre></figure>
+
 The public properties for the NetStreamPlayOptions object are described in the ActionScript 3 Language Reference [AS3].
 
-The message flow for the command is shown in the following illustration.
-```
+The message flow for the command is shown in the following illustration:
+
+<figure><pre>
     +--------------+                          +-------------+
     | Play2 Client |              |           |    Server   |
     +--------+-----+              |           +------+------+
@@ -1319,8 +1385,9 @@ Stream |     |                                       |
        |     |                    |                  |
        |  Keep receiving audio and video stream till finishes
                                   |
-```
-Message flow in the play2 command
+</pre>
+<figcaption>Message flow in the play2 command</figcaption>
+</figure>
 
 
 ##### 7.2.2.3.	deleteStream
@@ -1328,7 +1395,8 @@ Message flow in the play2 command
 NetStream sends the deleteStream command when the NetStream object is getting destroyed.
 
 The command structure from the client to the server is as follows:
-```
+
+<figure><pre>
 +--------------+----------+----------------------------------------+
 | Field Name   |   Type   |             Description                |
 +--------------+----------+----------------------------------------+
@@ -1344,7 +1412,8 @@ The command structure from the client to the server is as follows:
 | Stream ID    |  Number  | The ID of the stream that is destroyed |
 |              |          | on the server.                         |
 +--------------+----------+----------------------------------------+
-```
+</pre></figure>
+
 The server does not send any response.
 
 
@@ -1353,7 +1422,8 @@ The server does not send any response.
 NetStream sends the receiveAudio message to inform the server whether to send or not to send the audio to the client.
 
 The command structure from the client to the server is as follows:
-```
+
+<figure><pre>
 +--------------+----------+----------------------------------------+
 | Field Name   |   Type   |             Description                |
 +--------------+----------+----------------------------------------+
@@ -1369,7 +1439,7 @@ The command structure from the client to the server is as follows:
 | Bool Flag    |  Boolean | true or false to indicate whether to   |
 |              |          | receive audio or not.                  |
 +--------------+----------+----------------------------------------+
-```
+</pre></figure>
 
 The server does not send any response, if the receiveAudio command is sent with the bool flag set as false. If this flag is set to true, server responds with status messages NetStream.Seek.Notify and NetStream.Play.Start
 
@@ -1379,7 +1449,8 @@ The server does not send any response, if the receiveAudio command is sent with 
 NetStream sends the receiveVideo message to inform the server whether to send the video to the client or not.
 
 The command structure from the client to the server is as follows:
-```
+
+<figure><pre>
 +--------------+----------+----------------------------------------+
 | Field Name   |   Type   |             Description                |
 +--------------+----------+----------------------------------------+
@@ -1395,7 +1466,7 @@ The command structure from the client to the server is as follows:
 | Bool Flag    |  Boolean | true or false to indicate whether to   |
 |              |          | receive video or not.                  |
 +--------------+----------+----------------------------------------+
-```
+</pre></figure>
 
 The server does not send any response, if the receiveVideo command is sent with the bool flag set as false. If this flag is set to true, server responds with status messages NetStream.Seek.Notify and NetStream.Play.Start
 
@@ -1405,7 +1476,8 @@ The server does not send any response, if the receiveVideo command is sent with 
 The client sends the publish command to publish a named stream to the server. Using this name, any client can play this stream and receive the published audio, video, and data messages.
 
 The command structure from the client to the server is as follows:
-```
+
+<figure><pre>
 +--------------+----------+----------------------------------------+
 | Field Name   |   Type   |             Description                |
 +--------------+----------+----------------------------------------+
@@ -1434,7 +1506,8 @@ The command structure from the client to the server is as follows:
 |              |          | live: Live data is published without   |
 |              |          | recording it in a file.                |
 +--------------+----------+----------------------------------------+
-```
+</pre></figure>
+
 The server responds with the onStatus command to mark the beginning of publish.
 
 
@@ -1443,7 +1516,8 @@ The server responds with the onStatus command to mark the beginning of publish.
 The client sends the seek command to seek the offset (in milliseconds) within a media file or playlist.
 
 The command structure from the client to the server is as follows:
-```
+
+<figure><pre>
 +--------------+----------+----------------------------------------+
 | Field Name   |   Type   |             Description                |
 +--------------+----------+----------------------------------------+
@@ -1458,7 +1532,7 @@ The command structure from the client to the server is as follows:
 | milliSeconds |  Number  | Number of milliseconds to seek into    |
 |              |          | the playlist.                          |
 +--------------+----------+----------------------------------------+
-```
+</pre></figure>
 
 The server sends a status message NetStream.Seek.Notify when seek is successful. In failure, it returns an \_error message.
 
@@ -1468,7 +1542,8 @@ The server sends a status message NetStream.Seek.Notify when seek is successful.
 The client sends the pause command to tell the server to pause or start playing.
 
 The command structure from the client to the server is as follows:
-```
+
+<figure><pre>
 +--------------+----------+----------------------------------------+
 | Field Name   |   Type   |             Description                |
 +--------------+----------+----------------------------------------+
@@ -1491,7 +1566,7 @@ The command structure from the client to the server is as follows:
 |              |          | only send messages with timestamps     |
 |              |          | greater than this value.               |
 +--------------+----------+----------------------------------------+
-```
+</pre></figure>
 
 The server sends a status message NetStream.Pause.Notify when the stream is paused. NetStream.Unpause.Notify is sent when a stream in un-paused. In failure, it returns an \_error message.
 
@@ -1503,7 +1578,8 @@ Here are a few examples to explain message exchange using RTMP.
 #### 7.3.1. Publish Recorded Video
 
 This example illustrates how a publisher can publish a stream and then stream the video to the server. Other clients can subscribe to this published stream and play the video.
-```
+
+<figure><pre>
      +--------------------+                     +-----------+
      |  Publisher Client  |        |            |   Server  |
      +----------+---------+        |            +-----+-----+
@@ -1547,14 +1623,16 @@ Publishing|     |------------ Audio Data ------------>|
           |     |                  |                  |
                 |    Until the stream is complete     |
                 |                  |                  |
-```
-Message flow in publishing a video stream
+</pre>
+<figcaption>Message flow in publishing a video stream</figcaption>
+</figure>
 
 
 #### 7.3.2.	Broadcast a Shared Object Message
 
 This example illustrates the messages that are exchanged during the creation and changing of a shared object. It also illustrates the process of shared object message broadcasting.
-```
+
+<figure><pre>
                  +----------+                       +----------+
                  |  Client  |           |           |  Server  |
                  +-----+----+           |           +-----+----+
@@ -1583,15 +1661,16 @@ This example illustrates the messages that are exchanged during the creation and
                        |           (SendMessage)          |
                                         |                 |
                                         |                 |
-```
-Shared object message broadcast
+</pre>
+<figcaption>Shared object message broadcast</figcaption>
+</figure>
 
 
 #### 7.3.3.	Publish Metadata from Recorded Stream
 
-
 This example describes the message exchange for publishing metadata.
-```
+
+<figure><pre>
          +------------------+                       +---------+
          | Publisher Client |         |             |   FMS   |
          +---------+--------+         |             +----+----+
@@ -1611,8 +1690,9 @@ This example describes the message exchange for publishing metadata.
     from file |    |                                     |
               |    |---- Data Message (Metadata) ------->|
                    |                                     |
- ```
-Publishing metadata
+</pre>
+<figcaption>Publishing metadata</figcaption>
+</figure>
 
 
 ## 8. References
@@ -1649,5 +1729,3 @@ Michael C. Thornburgh (editor)
 - URI: http://www.adobe.com/
 
 Copyright Adobe Systems Incorporated
-
-<!-- Docs to Markdown version 1.0β17 -->
