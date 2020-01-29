@@ -399,7 +399,9 @@ figcaption {
 .tk-content > h1[id]::before,
 .tk-content > h2[id]::before,
 .tk-content > h3[id]::before,
-.tk-content > h4[id]::before
+.tk-content > h4[id]::before,
+.tk-content > h5[id]::before,
+.tk-content > h6[id]::before
 {
 	display: block;
 	height: 6.8rem;
@@ -716,7 +718,8 @@ code {
 h2:hover a,
 h3:hover a,
 h4:hover a,
-h5:hover a {
+h5:hover a,
+h6:hover a {
     text-decoration: none;
 }
 
