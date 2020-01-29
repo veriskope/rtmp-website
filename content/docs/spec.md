@@ -286,6 +286,9 @@ The protocol supports up to 65597 streams with IDs 3-65599. The IDs 0, 1, and 2 
 
 The bits 0-5 (least significant) in the chunk basic header represent the chunk stream ID.
 
+
+###### 1 Byte
+
 Chunk stream IDs 2-63 can be encoded in the 1-byte version of this field.
 
 <figure><pre>
@@ -296,6 +299,9 @@ Chunk stream IDs 2-63 can be encoded in the 1-byte version of this field.
 </pre>
 <figcaption>Chunk basic header 1</figcaption>
 </figure>
+
+
+###### 2 Bytes
 
 Chunk stream IDs 64-319 can be encoded in the 2-byte form of the header. ID is computed as (the second byte + 64).
 
@@ -308,6 +314,8 @@ Chunk stream IDs 64-319 can be encoded in the 2-byte form of the header. ID is c
 </pre>
 <figcaption>Chunk basic header 2</figcaption>
 </figure>
+
+###### 3 Bytes
 
 Chunk stream IDs 64-65599 can be encoded in the 3-byte version of this field. ID is computed as ((the third byte)\*256 + (the second byte) + 64).
 
