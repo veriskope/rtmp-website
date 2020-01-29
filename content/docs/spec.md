@@ -690,7 +690,7 @@ The first 2 bytes of the message data are used to identify the Event type.	Event
 Event Types are and their Event Data formats are enumerated in Section 7.1.7.
 
 
-## 7. RTMP Command Messages
+## 7. RTMP Messages
 
 This section describes the different types of messages and commands that are exchanged between the server and the client to communicate with each other.
 
