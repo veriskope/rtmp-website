@@ -315,42 +315,47 @@ figcaption {
   transition: fill 0.4s ease;
 }
 
+.tk-content strong {
+  color: #4c4c4c;
+  font-variant: small-caps;
+}
+
 .tk-content svg:hover,
 .tk-content svg:focus {
   fill: #ce0201;
 }
 
 .tk-content h1 {
-  color: #4c4c4c;
   font-size: 3rem;
   line-height: 1.25;
   padding-top: 1rem;
 }
 .tk-content h2 {
-  color: #4c4c4c;
   font-size: 2.25rem;
   line-height: 1.25;
-  margin-top: 1rem;
+  margin-top: 3rem;
 }
 .tk-content h3 {
   border-bottom: 1px solid black;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
+  font-variant: small-caps;
   line-height: 1.25;
-  margin-top: .8rem;
-  text-transform: uppercase;
+  margin-top: 2.5rem;
+  text-transform: lowercase;
 }
 .tk-content h4,
 .tk-content h5 {
-  font-size: 1.1rem;
+  font-size: 1rem;
+  font-weight: 700;
   line-height: 1.25;
-  margin-top: .8rem;
+  margin-top: 2.5rem;
 }
 
 .tk-content h6 {
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.25;
-  margin-top: .8rem;
+  margin-top: 1rem;
   text-transform: uppercase;
 }
 
