@@ -689,7 +689,7 @@ This section describes the different types of messages and commands that are exc
 The different types of messages that are exchanged between the server and the client include audio messages for sending the audio data, video messages for sending video data, data messages for sending any user data, shared object messages, and command messages. Shared object messages provide a general purpose way to manage distributed data among multiple clients and a server. Command messages carry the AMF encoded commands between the client and the server. A client or a server can request Remote Procedure Calls (RPC) over streams that are communicated using the command messages to the peer.
 
 
-### 7.1.	Types of Messages
+### 7.1.	RTMP Message Types
 
 The server and the client send messages over the network to communicate with each other. The messages can be of any type which includes audio messages, video messages, command messages, shared object messages, data messages, and user control messages.
 
@@ -697,6 +697,8 @@ The server and the client send messages over the network to communicate with eac
 #### 7.1.1.	Command Message (20, 17)
 
 Command messages carry the AMF-encoded commands between the client and the server. These messages have been assigned message type value of 20 for AMF0 encoding and message type value of 17 for AMF3 encoding. These messages are sent to perform some operations like connect, createStream, publish, play, pause on the peer. Command messages like onstatus, result etc. are used to inform the sender about the status of the requested commands. A command message consists of command name, transaction ID, and command object that contains related parameters. A client or a server can request Remote Procedure Calls (RPC) over streams that are communicated using the command messages to the peer.
+
+For more detail, see [7.2 Command Messages](https://rtmp.veriskope.com/docs/spec/#72command-messages).
 
 
 #### 7.1.2.	Data Message (18, 15)
@@ -801,7 +803,7 @@ The following user control event types are supported:
 | PingResponse (=7) | The client sends this event to the server in response to the ping request. The event data is a 4-byte timestamp, which was received with the PingRequest request. |
 
 
-### 7.2.	Types of Commands
+### 7.2. Command Messages
 
 The client and the server exchange commands which are AMF encoded. The sender sends a command message that consists of command name, transaction ID, and command object that contains related parameters. For example, the connect command contains ’app’ parameter, which tells the server application name the client is connected to. The receiver processes the command and sends back the response with the same transaction ID. The response string is either \_result, \_error, or a method name, for example, verifyClient or contactExternalServer.
 
