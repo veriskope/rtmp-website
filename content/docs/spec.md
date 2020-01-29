@@ -303,7 +303,7 @@ Chunk stream IDs 64-319 can be encoded in the 2-byte form of the header. ID is c
  0                   1
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|fmt|     0     |   cs id - 64  |
+|fmt|0 0 0 0 0 0|   cs id - 64  |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </pre>
 <figcaption>Chunk basic header 2</figcaption>
@@ -314,7 +314,7 @@ Chunk stream IDs 64-65599 can be encoded in the 3-byte version of this field. ID
 <figure><pre>
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|fmt|     1     |          cs id - 64           |
+|fmt|0 0 0 0 0 1|          cs id - 64           |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </pre>
 <figcaption>Chunk basic header 3</figcaption>
