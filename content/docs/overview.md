@@ -63,21 +63,21 @@ RTMP spec, section 6.1
     ---------------------------------------------------------------------
 ```
 
-* 01: SetChunkSize
-* 02: Abort
-* 03: Ack Chunk
-* 04: User Control Message
-* 05: Window Ack Size
-* 06: Peer Bandwidth
-* 08: Audio Message
-* 09: Video Message
-* 15: Data Message (AMF3)
-* 16: Shared Object Message (AMF3)
-* 17: Command Message (AMF3)
-* 18: Data Message (AMF0)
-* 19: Shared Object Message (AMF0)
-* 20: Command Message (AMF0)
-* 22: Aggregate Message
+* 01: [SetChunkSize](/docs/spec/#541set-chunk-size-1)
+* 02: [Abort](/docs/spec/#542abort-message-2)
+* 03: [Ack](/docs/spec/#543acknowledgement-3)
+* 04: [User Control Message](/docs/spec/#62-user-control-messages-4)
+* 05: [Window Ack Size](/docs/spec/#544window-acknowledgement-size-5)
+* 06: [Peer Bandwidth](/docs/spec/#545set-peer-bandwidth-6)
+* 08: [Audio Message](/docs/spec/#714audio-message-8)
+* 09: [Video Message](/docs/spec/#715video-message-9)
+* 15: [Data Message](/docs/spec/#712data-message-18-15) (AMF3)
+* 16: [Shared Object Message](/docs/spec/#713shared-object-message-19-16) (AMF3)
+* 17: [Command Message](/docs/spec/#711command-message-20-17) (AMF3)
+* 18: [Data Message](/docs/spec/#712data-message-18-15) (AMF0)
+* 19: [Shared Object Message](/docs/spec/#713shared-object-message-19-16) (AMF0)
+* 20: [Command Message](/docs/spec/#711command-message-20-17) (AMF0)
+* 22: [Aggregate Message](/docs/spec/#716aggregate-message-22)
 
 ### Initial Connection Sequence
 
