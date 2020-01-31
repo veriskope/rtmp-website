@@ -706,7 +706,7 @@ The server and the client send messages over the network to communicate with eac
 
 Command messages carry the AMF-encoded commands between the client and the server. These messages have been assigned message type value of 20 for AMF0 encoding and message type value of 17 for AMF3 encoding. These messages are sent to perform some operations like connect, createStream, publish, play, pause on the peer. Command messages like onstatus, result etc. are used to inform the sender about the status of the requested commands. A command message consists of command name, transaction ID, and command object that contains related parameters. A client or a server can request Remote Procedure Calls (RPC) over streams that are communicated using the command messages to the peer.
 
-For more detail, see [7.2 Command Messages](https://rtmp.veriskope.com/docs/spec/#72command-messages).
+For more detail, see [7.2 Command Messages](https://rtmp.veriskope.com/docs/spec/#72-command-messages).
 
 
 #### 7.1.2.	Data Message (18, 15)
