@@ -1104,9 +1104,10 @@ The command structure of the response is as follows:
 
 ##### 7.2.1.3.	createStream
 
-The client sends this command to the server to create a logical channel for message communication The publishing of audio, video, and metadata is carried out over stream channel created using the createStream command.
+The client sends this command to the server to create a logical channel for message communication The publishing of audio, video, and metadata is carried out over stream channel created using the createStream command. The server responds with a
+message stream ID (or an error).
 
-NetConnection is the default communication channel, which has a stream ID 0. Protocol and a few command messages, including createStream, use the default communication channel.
+NetConnection is the default communication channel, which uses message stream ID 0. [Protocol control messages](#54-protocol-control-messages) and a few command messages, including createStream, use this default communication channel.
 
 The command structure from the client to the server is as follows:
 
@@ -1688,7 +1689,7 @@ This example describes the message exchange for publishing metadata.
                    |            connect done             |
                    |                  |                  |
                    |                  |                  |
-           ---+--- |-- Command Messsage (createStream) ->|
+           ---+--- |-- Command Message (createStream)  ->|
        Create |    |                                     |
        Stream |    |                                     |
            ---+--- |<-------- Command Message -----------|
