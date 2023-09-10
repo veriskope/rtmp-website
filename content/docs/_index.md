@@ -29,3 +29,7 @@ recorded video, as well as broadcast streaming, video on demand (VOD) use cases.
 - [Adobe’s Real Time Messaging Protocol](/pdf/rtmp_specification_1.0.pdf) (PDF)
 - [Video File Format Specification Version 10](/pdf/video_file_format_spec_v10.pdf) (PDF)
 - [Adobe Flash Video File Format Specification Version 10.1](/pdf/video_file_format_spec_v10_1.pdf) (PDF)
+
+### Other Resources
+
+- [RTMP Errata and Addenda (HTML)](https://zenomt.github.io/rtmp-errata-addenda/rtmp-errata-addenda.html) ([Plain Text](https://zenomt.github.io/rtmp-errata-addenda/rtmp-errata-addenda.txt)) ([Source](https://github.com/zenomt/rtmp-errata-addenda))
